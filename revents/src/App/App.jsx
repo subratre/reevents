@@ -1,22 +1,18 @@
+import React, { useState } from "react";
+import { Container } from "semantic-ui-react";
+import EventDashboard from "../features/events/eventDashboard/eventDashboard";
+import NavBar from "../features/Nav/NavBar";
 import "./style.css";
 
 function App() {
+  const [formOpen, setFormOpen] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar setFormOpen={setFormOpen} />
+      <Container className="main">
+        <EventDashboard formOpen={formOpen} setFormOpen={setFormOpen} />
+      </Container>
+    </>
   );
 }
 
