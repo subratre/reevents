@@ -12,17 +12,17 @@ export default function EventDashboard({
 }) {
   const [events, setEvents] = useState(sampleData);
 
-  const handlEvents = (event) => {
-    setEvents([...events, event]);
-  };
+  // const handlEvents = (event) => {
+  //   setEvents([...events, event]);
+  // };
 
-  function handleUpdateEvent(updatedEvent) {
-    setEvents(
-      events.map((evt) => (evt.id === updatedEvent.id ? updatedEvent : evt))
-    );
-    selectEvent(null);
-    setFormOpen(false);
-  }
+  // function handleUpdateEvent(updatedEvent) {
+  //   setEvents(
+  //     events.map((evt) => (evt.id === updatedEvent.id ? updatedEvent : evt))
+  //   );
+  //   selectEvent(null);
+  //   setFormOpen(false);
+  // }
 
   const handleDeleteEvent = (eventId) => {
     setEvents(events.filter((evt) => evt.id !== eventId));
@@ -31,23 +31,11 @@ export default function EventDashboard({
   return (
     <Grid>
       <Grid.Column width="10">
-        <EventList
-          events={events}
-          selectEvent={selectEvent}
-          handleDeleteEvent={handleDeleteEvent}
-        />
+        <EventList events={events} handleDeleteEvent={handleDeleteEvent} />
         <h2>Left Column</h2>
       </Grid.Column>
       <Grid.Column width="6">
-        {formOpen && (
-          <EventForm
-            setFormOpen={setFormOpen}
-            handleEvents={handlEvents}
-            selectedEvent={selectedEvent}
-            key={selectedEvent ? selectedEvent.id : null}
-            updateEvent={handleUpdateEvent}
-          />
-        )}
+        <h2>Event Filters</h2>
       </Grid.Column>
     </Grid>
   );
