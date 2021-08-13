@@ -4,11 +4,21 @@ import "semantic-ui-css/semantic.min.css";
 import App from "./App/App";
 import "./style.css";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "./store/configureStore";
+import ScrollToTop from "./App/ScrollToTop";
+
+const store = configureStore();
+
+console.log(store.getState());
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <ScrollToTop />
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
