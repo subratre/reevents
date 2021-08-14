@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "semantic-ui-react";
+import { openModal } from "../../App/Common/modal/modalReducers";
 import {
   decrement,
   DECREMENT_COUNTER,
@@ -24,6 +25,13 @@ const SandBox = () => {
         content="Decrement"
         color="red"
         onClick={() => dispatch(decrement(5))}
+      />
+      <Button
+        content="Open Modal"
+        color="teal"
+        onClick={() =>
+          dispatch(openModal({ modalType: "TestModal", modalProps: { data } }))
+        }
       />
     </>
   );
